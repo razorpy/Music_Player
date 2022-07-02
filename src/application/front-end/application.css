@@ -1,0 +1,56 @@
+.parent{
+    -fx-background-color: #FDFDFE;
+}
+.sidebar{
+    -fx-background-color: #FFF8E6;
+}
+.close-btn{
+    -fx-background-color: #FF6058;
+    -fx-background-radius: 100%
+}
+.close-btn:hover{
+    -fx-background-color: red;
+    -fx-background-radius: 100%
+}
+.min-btn{
+    -fx-background-color: #27CA41;
+    -fx-background-radius: 100%
+}
+.min-btn:hover{
+    -fx-background-color: green;
+    -fx-background-radius: 100%
+}
+.max-btn{ 
+    -fx-background-color: #FFC222;
+    -fx-background-radius: 100%
+}
+.max-btn:hover{ 
+    -fx-background-color: yellow;
+    -fx-background-radius: 100%
+}
+.create-music-btn{
+    -fx-background-color: #397DEF;
+    -fx-background-radius: 10px;
+}
+.slidebar-btns{
+    -fx-background-color: transparent;
+    -fx-background-radius: 5px;
+}
+
+.jfx-slider > .colored-track {
+     -fx-background-color:   #6500c5;
+}
+.jfx-slider > .thumb {
+     -fx-background-color: #6500c5;
+}
+
+#BUTTON:hover{     
+  -fx-background-color:#1e0429;
+  -fx-text-fill:black;
+  -fx-font-weight:bold; 
+}
+
+#BAR{
+	-fx-accent: #610587;
+	-fx-background-color:black;
+}
