@@ -100,9 +100,9 @@ public class Controller{
     @FXML
     TableColumn<MusicaInfo, String> music_playlist;
     @FXML
-    private TableColumn<MusicaInfo, Button> play_playlist2;
+    TableColumn<MusicaInfo, Button> play_playlist2;
     @FXML
-    private TableColumn<MusicaInfo, Button> remove;
+    TableColumn<MusicaInfo, Button> remove;
 	
 	@FXML
 	void pegar_nome(ActionEvent e) {
@@ -218,7 +218,7 @@ public class Controller{
 		if (!janela_atual.equals(getPlayer().org)) {
 			getPlayer().setOrganizer(janela_atual);
 		}
-		getPlayer().playSelected(id);
+		getPlayer().playSelected(janela_atual.nome_playlist + ".txt", id);
 	}
 		
 	public Player getPlayer() {
@@ -300,6 +300,10 @@ public class Controller{
 		remove.setCellValueFactory(new PropertyValueFactory<>("remove"));
 		
 		table2.setItems(list);
+	}
+	
+	public void removeMusica(int musica) {
+		this.player.init.removeMusica(janela_atual.getNome_playlist(), musica);
 	}
 		
 }

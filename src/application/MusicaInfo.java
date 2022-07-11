@@ -128,7 +128,7 @@ public class MusicaInfo {
 		this.remove = new Button();
 		this.remove.setText("🗑");
 		this.remove.setOnMouseClicked(event ->{
-
+			c.removeMusica(id);
 		});
 	}
 	

@@ -263,6 +263,10 @@ public class Organizador {
 	public void limparFila() {
 		fila.clear();
 	}
+	public void apagarFila() {
+		fila.clear();
+		listaInicial.clear();
+	}
 	
 	public void organizaDados() {
 		int i = 0;
