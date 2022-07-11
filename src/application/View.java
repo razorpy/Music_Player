@@ -104,8 +104,8 @@ public class View {
 	}
 	
 	public void change_to_Playlist(Organizador p) {
-		
 		getController().main_Pane.setCenter(FxmlLoader.getPage("Musics_Playlist_Pane", controller));
+		getController().playlist_Name_Top.setText(p.nome_playlist);
 	}
 	
 	/**
