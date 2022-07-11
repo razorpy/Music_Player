@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="YourBeats_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="775.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="YourBeats_Pane" layoutY="-6.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
+         <children>
+            <Label layoutX="38.0" layoutY="41.0" prefHeight="56.0" prefWidth="266.0" text="YourBeats" textFill="#e4e2e2">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="90.0" prefHeight="30.0" prefWidth="489.0" text="Aqui estão todas as suas músicas!" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TableView fx:id="table" layoutY="175.0" prefHeight="465.0" prefWidth="775.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
+              <columns>
+                <TableColumn fx:id="play" editable="false" prefWidth="28.0" resizable="false" sortable="false" />
+                <TableColumn fx:id="nome" editable="false" prefWidth="284.0" resizable="false" sortable="false" text="Música" />
+                <TableColumn fx:id="album" editable="false" prefWidth="247.0" resizable="false" sortable="false" text="Albúm" />
+                <TableColumn fx:id="artista" editable="false" prefWidth="213.0" resizable="false" sortable="false" text="Banda" />
+              </columns>
+            </TableView>
+            <ImageView fitHeight="21.0" fitWidth="25.0" layoutX="2.0" layoutY="177.0" pickOnBounds="true">
+               <image>
+                  <Image url="@icons/miniplay-button.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="buscar_yourBeats" layoutX="38.0" layoutY="129.0" prefHeight="25.0" prefWidth="195.0" />
+            <Button fx:id="buscar_yourBeats_Button" layoutX="221.0" layoutY="130.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="35.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="28.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@icons/lupa.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

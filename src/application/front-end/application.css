@@ -37,20 +37,41 @@
     -fx-background-radius: 5px;
 }
 
-.jfx-slider > .colored-track {
-     -fx-background-color:   #6500c5;
-}
-.jfx-slider > .thumb {
-     -fx-background-color: #6500c5;
+.button:clicked{
+	-fx-background-radius: 5px;
+	-fx-background-color: #511277;
+	
 }
 
-#BUTTON:hover{     
-  -fx-background-color:#1e0429;
-  -fx-text-fill:black;
-  -fx-font-weight:bold; 
-}
 
 #BAR{
 	-fx-accent: #610587;
 	-fx-background-color:black;
+}
+#vol_slider > .animated-thumb {
+     -fx-background-color: #6500c5;
+}
+
+#vol_slider >.slider-value {
+     -fx-fill: purple;
+     -fx-stroke: white;
+}
+
+#vol_slider >.colored-track{
+	-fx-background-color: #6500c5;
+}
+
+#vol_slider >.thumb{
+	-fx-background-color: #6500c5;
+}
+
+#balance_slider >.thumb{
+	-fx-background-color: #6500c5;
+}
+#balance_slider >.colored-track{
+	-fx-background-color: #6500c5;
+}
+
+#balance_slider > .animated-thumb {
+     -fx-background-color: transparent;
 }

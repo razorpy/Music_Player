@@ -20,7 +20,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@front-end\application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" styleClass="parent" stylesheets="@application.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
    <left>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: #ecf0f1;" styleClass="sidebar" BorderPane.alignment="CENTER">
          <children>
@@ -48,7 +48,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="55.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 0px 0px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="criar_play_Button" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="45.0" ripplerFill="WHITE" style="-fx-background-color: #518CFE; -fx-background-radius: 5px 5px 5px 5px;" text="+" textFill="WHITE" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -64,10 +64,13 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                            <image>
-                              <Image url="@front-end\icons\lar.png" />
+                              <Image url="@icons/lar.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <cursor>
@@ -83,10 +86,13 @@
                      <graphic>
                         <ImageView fitHeight="28.0" fitWidth="25.0" opacity="0.57" pickOnBounds="true" style="-fx-translate-x: -10;">
                            <image>
-                              <Image url="@front-end\icons\livros.png" />
+                              <Image url="@icons/livros.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
                <cursor>
@@ -105,10 +111,13 @@
                      <graphic>
                         <ImageView fitHeight="25.0" fitWidth="25.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -2;">
                            <image>
-                              <Image url="@front-end\icons\disco-de-vinil.png" />
+                              <Image url="@icons/disco-de-vinil.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
@@ -125,29 +134,38 @@
                      <graphic>
                         <ImageView fitHeight="26.0" fitWidth="26.0" opacity="0.64" pickOnBounds="true" style="-fx-translate-x: -8;">
                            <image>
-                              <Image url="@front-end\icons\configuracoes.png" />
+                              <Image url="@icons/configuracoes.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                </children>
             </HBox>
-            <VBox layoutY="365.0" prefHeight="351.0" prefWidth="252.0">
+            <VBox layoutX="-1.0" layoutY="350.0" prefHeight="351.0" prefWidth="252.0">
                <children>
                   <ImageView fx:id="player_Image" fitHeight="184.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" translateX="35.0">
                      <image>
-                        <Image url="@front-end\icons\parachutes.jpg" />
+                        <Image url="@front-end/icons/parachutes.jpg" />
                      </image>
                   </ImageView>
-                  <Label alignment="CENTER" prefHeight="60.0" prefWidth="252.0" text="Coldplay">
+                  <Label fx:id="band" prefHeight="60.0" prefWidth="252.0" text="Coldplay">
                      <font>
                         <Font name="Avenir Book" size="22.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets left="13.0" />
+                     </VBox.margin>
                   </Label>
-                  <Label alignment="TOP_CENTER" prefHeight="124.0" prefWidth="252.0" text="Yellow">
+                  <Label fx:id="titulo" prefHeight="32.0" prefWidth="251.0" text="Yellow">
                      <font>
-                        <Font name="Avenir Book" size="22.0" />
+                        <Font size="17.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets left="13.0" top="-15.0" />
+                     </VBox.margin>
                   </Label>
                </children>
             </VBox>
@@ -159,7 +177,7 @@
          <children>
             <ImageView fx:id="back_scene_Button" fitHeight="28.0" fitWidth="25.0" layoutX="30.0" layoutY="23.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@front-end\icons\angulo-esquerdo.png" />
+                  <Image url="@icons/angulo-esquerdo.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -167,7 +185,7 @@
             </ImageView>
             <ImageView fx:id="next_scene_Button" fitHeight="28.0" fitWidth="25.0" layoutX="76.0" layoutY="22.0" opacity="0.57" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@front-end\icons\angulo-direito.png" />
+                  <Image url="@icons/angulo-direito.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -180,57 +198,78 @@
                      <graphic>
                         <ImageView fx:id="end_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@front-end\icons\stop-button.png" />
+                              <Image url="@icons/stop-button.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 10; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="previous_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@front-end\icons\previous-track.png" />
+                              <Image url="@icons/previous-track.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="51.0" prefWidth="55.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 20; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="play_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@front-end\icons\play-button.png" />
+                              <Image url="@icons/play-button.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 30; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="next_Button" fitHeight="46.0" fitWidth="42.0" pickOnBounds="true">
                            <image>
-                              <Image url="@front-end\icons\next-track.png" />
+                              <Image url="@icons/next-track.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button mnemonicParsing="false" prefHeight="23.0" prefWidth="36.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 40; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="repeat_Button" fitHeight="46.0" fitWidth="43.0" pickOnBounds="true">
                            <image>
-                              <Image url="@front-end\icons\repeat.png" />
+                              <Image url="@icons/repeat.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </Button>
                   <Button fx:id="sound_Button" mnemonicParsing="false" prefHeight="45.0" prefWidth="52.0" style="-fx-background-radius: 100; -fx-translate-y: -5; -fx-translate-x: 130; -fx-background-color: #6500c5#6500c5;">
                      <graphic>
                         <ImageView fx:id="repeat_Button1" fitHeight="45.0" fitWidth="41.0" pickOnBounds="true">
                            <image>
-                              <Image url="@front-end\icons\sound.png" />
+                              <Image url="@icons/sound.png" />
                            </image>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
                   </Button>
-                  <JFXSlider fx:id="sound_Slider" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 130; -fx-translate-y: -5;" />
+                  <JFXSlider fx:id="sound_Slider" prefHeight="16.0" prefWidth="147.0" style="-fx-translate-x: 130; -fx-translate-y: -5;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></JFXSlider>
                </children>
             </HBox>
             <Label layoutX="41.0" layoutY="71.0" prefHeight="43.0" prefWidth="134.0" text="Settings">
@@ -242,7 +281,7 @@
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="49.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                      <image>
-                        <Image url="@front-end\icons\pasta.png" />
+                        <Image url="@icons/pasta.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -300,7 +339,7 @@
                <graphic>
                   <ImageView fitHeight="35.0" fitWidth="49.0" opacity="0.57" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: -10;">
                      <image>
-                        <Image url="@front-end\icons\controles-deslizantes-de-configuracoes.png" />
+                        <Image url="@icons/controles-deslizantes-de-configuracoes.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -310,7 +349,7 @@
             </Button>
             <ImageView fitHeight="268.0" fitWidth="232.0" layoutX="551.0" layoutY="-23.0" pickOnBounds="true" preserveRatio="true" style="-fx-translate-x: 10;">
                <image>
-                  <Image url="@front-end\icons\Piratify%20Logo%20-%20Branco.png" />
+                  <Image url="@icons/Piratify%20Logo%20-%20Branco.png" />
                </image>
             </ImageView>
          </children>

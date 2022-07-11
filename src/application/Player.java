@@ -1,45 +1,68 @@
 package application;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import javafx.scene.image.Image;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
+/**
+ * Responsável por tocar a música e todas as operações relacionadas à reprodução de uma fila de reprodução.
+ */
 public class Player {
 
-	// TODO: ver se um construtor cai bem aqui
-	Controller c;
+	View view;
 	Inicializador init;
 	Organizador org;
 	Musica atual;
 	MediaPlayer mediaPlayer;
+	Timer timer;
+	TimerTask task;
 	private double vol;
 	private boolean rand;
 	private boolean repeat;
 	private boolean repeatSingle;
-
-	public Player(Controller c){
-		this.c = c;
-		init = new Inicializador();
-		org = init.getSuperOrg();
-		vol = 0.1;
+	private boolean dadosOrganizados;
+	
+	/**
+	 * Seta todos os valores booleanos usados na reprodução e o View. Inicializador precisa ser setado.
+	 * 
+	 * @param v Classe View
+	 */
+	public Player(View v){
+		this.view = v;
+		vol = 0.5;
 		rand = false;
 		repeat = false;
 		repeatSingle = false;
-		
+		dadosOrganizados = false;
 	}
 	
-	public void volUp(){
-		vol += 0.1;
-		if(vol > 1.0)
-			vol = 1.0;
-		this.setVolume(vol);
+	public void setInicializador(Inicializador init) {
+		this.init = init;
+		org = this.init.getSuperOrg();
 	}
-
-	public void volDown(){
-		vol -= 0.1;
-		if(vol < 0.0)
-			vol = 0.0;
-		this.setVolume(vol);
+	
+	/**
+	 * Chama a função play() do mediaPlayer
+	 */
+	public void playMedia() {
+		beginTimer();
+		mediaPlayer.play();
 	}
+	
+	/**
+	 * Chama a função pause() do mediaPlayer
+	 */
+	public void pauseMedia() {
+		cancelTimer();
+		mediaPlayer.pause();
+	}
+	
+	/*
+	 * Alterna a ordem da fila entre aleatória e não aleatória.
+	 */
 	public void random() {
 		// ativar underline ou desativar underline
 		// se underline tiver ativado, ao clicar, será desativado e não será random
@@ -56,22 +79,29 @@ public class Player {
 		}
 		org.listaFila();
 	}
-
+	
+	/*
+	 * Toca a próxima música da fila.
+	 */
 	public void nextMusic() {
-
 		if(!repeatSingle)
 			org.next(repeat);
 		setCurrentSong();
 		playPause();
 	}
-
+	
+	/**
+	 * Toca a música mais recente do histórico.
+	 */
 	public void prevMusic() {
-
 		org.prev();
 		setCurrentSong();
 		playPause();
 	}
-
+	
+	/**
+	 * Alterna entre os modos sem repeat, repeat e repeat single
+	 */
 	public void repeat() {
 		if(repeat == false)
 			repeat = true;
@@ -85,29 +115,40 @@ public class Player {
 		}
 		System.out.println("Repeat: " + repeat + "\nRepeat Single: " + repeatSingle);
 	}
-
+	
+	/**
+	 * Chama as funções playMedia ou pauseMedia dependendo do estado atual do mediaPlayer.
+	 */
 	public void playPause(){
-
 		if(mediaPlayer == null) {
 			setCurrentSong();
 		}
 		else if(mediaPlayer.getStatus().toString() == "PLAYING") {
-			mediaPlayer.pause();
+			pauseMedia();
 		}
 		else
-			mediaPlayer.play();
+			playMedia();
 	}
-
+	
+	/**
+	 * Seta a música atual do player e pega os metadados
+	 */
 	public void setCurrentSong(){
-
 		if(org.size() == 0){
 			releasePlayer();
 			return;
 		}
-
+		
 		atual = org.getMusica(org.ATUAL);
-		atual.organizaDados();
-		c.setImage();
+		if (!dadosOrganizados) {			
+			organiza();
+		}
+		
+		// sets do view
+		view.setProgresso(0);
+		view.setCapa();
+		view.setTitle(atual.getNome_musica());
+		view.setBand(atual.getNome_artista());
 
 		releasePlayer();
 		System.out.println("TOCANDO: " + atual.getNome_musica());
@@ -117,33 +158,86 @@ public class Player {
 		mediaPlayer = new MediaPlayer(media);
 		this.setVolume(this.getVolume());
 		mediaPlayer.setCycleCount(1);
-
-		// Autoplay
+		playMedia();
+		
 		mediaPlayer.setOnEndOfMedia(new Runnable() {
-
+			
+			
 			@Override
 			public void run() {
 				nextMusic();
 			}
 		});
 	}
-
+	
+	public void organiza() {
+		org.organizaDados();
+		dadosOrganizados = true;
+		for (MusicaInfo mf : org.listaInfo) {
+			System.out.println(mf);
+		}
+	}
+	
+	/**
+	 * Para a reprodução atual e nulifica o mediaPlayer
+	 */
 	private void releasePlayer() {
 		if (mediaPlayer != null) {
 			mediaPlayer.stop();
 			mediaPlayer = null;
 		}
 	}
+	
+	/**
+	 * Inicia o timer de reprodução
+	 */
+	private void beginTimer() {
+		timer = new Timer(); 
+		task = new TimerTask() {
+			public void run() {
+				double current = -1;
+				double end = -1;
+				if (getMediaPlayer() != null) {
+					current = getMediaPlayer().getCurrentTime().toSeconds();
+					end = getMediaPlayer().getTotalDuration().toSeconds();
+				}
+				view.setProgresso(current, end);	
+				if (current/end == 1) {
+					cancelTimer();
+				}
+				if (current == -1 || end == -1) {
+					view.setProgresso(0);
+				}
+			}
+			
+		};
+		timer.scheduleAtFixedRate(task, 1000, 1000);
+	}
+	
+	/**
+	 * Cancela o timer de reprodução
+	 */
+	private void cancelTimer() {
+		timer.cancel();
+	}
+		
 
-	private void setVolume(double vol) {
-		mediaPlayer.setVolume(vol);
+	public void setVolume(double vol) {
+		if (mediaPlayer != null)
+			mediaPlayer.setVolume(vol);
 		this.vol = vol;
+		if (vol <= 0) {
+			view.changeSomIMG(true);
+		}
+		else {
+			view.changeSomIMG(false);
+		}
 	}
 
-	private double getVolume() {
+	public double getVolume() {
 		return this.vol;
 	}
-
+	
 	public Musica getCurrent(){
 
 		if(org.size() == 0) {
@@ -152,4 +246,37 @@ public class Player {
 		else
 			return atual;
 	}
+	
+	public MediaPlayer getMediaPlayer() {
+		return this.mediaPlayer;
+	}
+	
+	public void setOrganizer(Organizador o) {
+		this.org = o;
+	}
+	
+	/**
+	 * Toca uma música específica de uma playlist específica.
+	 * 
+	 * @param playlist Nome do arquivo .txt da playlist
+	 * @param index Índice da música
+	 */
+	public void playSelected(String playlist, int index) {
+		this.org = init.getPlaylistOrganizer(playlist);
+		this.org.setCurrent(index);
+		playPause();
+	}
+	
+	/**
+	 * Toca uma música específica da biblioteca de todas as músicas
+	 * 
+	 * @param index Índice da música
+	 */
+	public void playSelected(int index) {
+		this.org = init.lib.get(0);
+		this.org.setCurrent(index);
+		this.nextMusic();
+		playPause();
+	}
+	
 }
