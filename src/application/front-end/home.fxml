@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane layoutX="4.0" prefHeight="599.0" prefWidth="768.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="-12.0" layoutY="-4.0" prefHeight="613.0" prefWidth="790.0" style="-fx-background-color: WHITE;" AnchorPane.bottomAnchor="-10.0" AnchorPane.leftAnchor="-12.0" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-4.0">
+         <children>
+            <Label layoutX="202.0" layoutY="159.0" prefHeight="262.0" prefWidth="267.0" text="TESTE PORRA" textFill="#cd0a0a">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+         </children></Pane>
+   </children>
+</AnchorPane>

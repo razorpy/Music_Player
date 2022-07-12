@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="addMusics_AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="775.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="addMusics_Pane" layoutY="-6.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
+         <children>
+            <Label layoutX="38.0" layoutY="41.0" prefHeight="56.0" prefWidth="266.0" text="Músicas" textFill="#e4e2e2">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="91.0" prefHeight="30.0" prefWidth="489.0" text="Escolha as músicas que você quer adicionar a playlist" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TableView fx:id="table3" layoutY="175.0" prefHeight="465.0" prefWidth="775.0" style="-fx-background-color: #40035e#40035e #40035e#40035e;">
+               <columns>
+                  <TableColumn fx:id="music_add" prefWidth="215.0" text="Música" />
+                  <TableColumn fx:id="band_add" prefWidth="215.0" text="Banda" />
+                  <TableColumn fx:id="album_add" prefWidth="215.0" text="Albúm" />
+                  <TableColumn fx:id="add" prefWidth="129.0" text="ADD" />
+               </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
