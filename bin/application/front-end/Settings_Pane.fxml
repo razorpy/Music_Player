@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXSlider?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="775.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutY="-6.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-6.0">
+         <children>
+            <Label layoutX="38.0" layoutY="41.0" prefHeight="49.0" prefWidth="160.0" text="Settings" textFill="#e4e2e2">
+               <font>
+                  <Font size="39.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="181.0" text="Tipo de aúdio" textFill="#e4e2e2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <JFXToggleButton layoutX="86.0" layoutY="207.0" selected="true" text="Stereo/Mono" textFill="#e4e2e2" toggleColor="#4d0094" toggleLineColor="#9278c2">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXToggleButton>
+            <Label layoutX="38.0" layoutY="307.0" text="Balanço" textFill="#e4e2e2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="349.0" layoutY="305.0" prefHeight="26.0" prefWidth="15.0" text="1" textFill="#e4e2e2">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="127.0" layoutY="305.0" prefHeight="26.0" prefWidth="24.0" text="-1" textFill="#e4e2e2">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <JFXSlider id="balance_slider" layoutX="181.0" layoutY="312.0" stylesheets="@application.css" />
+         </children></Pane>
+   </children>
+</AnchorPane>
